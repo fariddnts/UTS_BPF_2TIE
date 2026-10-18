@@ -43,11 +43,24 @@ class QuestionController extends Controller
             'pertanyaan.max'      => 'Pertanyaan maksimal 300 karakter',
         ]);
 
-        $data['nama']       = $request->nama;
-        $data['email']      = $request->email;
-        $data['pertanyaan'] = $request->pertanyaan;
+        $nama       = e($request->nama);
+        $email      = e($request->email);
+        $pertanyaan = e($request->pertanyaan);
 
-        return view('home-question-respon', $data);
+        return redirect()->route('home')->with('info',
+            "Terimakasih <b>$nama</b>! Pertanyaan ini: <b>$pertanyaan</b> akan segera direspon melalui email <b>$email</b>");
+    }
+
+    /**
+     * Respon page (jika diakses via question.respon).
+     */
+    public function respon()
+    {
+        return view('home-question-respon', [
+            'nama'       => session('nama'),
+            'email'      => session('email'),
+            'pertanyaan' => session('pertanyaan'),
+        ]);
     }
 
     /**
