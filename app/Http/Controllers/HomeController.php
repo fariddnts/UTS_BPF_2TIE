@@ -11,8 +11,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data ['username'] = "harun";
-        $data['last_login']=date('Y-m-d H:i:s');
+        $data['username'] = "user";
+        $data['last_login'] = now()->format('Y-m-d H:i:s');
         $data ['list_pendidikan']=['SD','SMP','SMA','S1'];
         return view('home',$data);
     }
