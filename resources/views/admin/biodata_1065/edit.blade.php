@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Volt - Tambah Biodata 1083</title>
+<title>Volt - Edit Biodata 1065</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets-admin/img/favicon/favicon-32x32.png') }}">
 <link type="text/css" href="{{ asset('assets-admin/css/volt.css') }}" rel="stylesheet">
@@ -47,11 +47,11 @@
         </a>
       </li>
       <li class="nav-item active">
-        <a href="{{ route('biodata1083.index') }}" class="nav-link">
+        <a href="{{ route('biodata1065.index') }}" class="nav-link">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
           </span>
-          <span class="sidebar-text fw-bold text-warning">Biodata 1083</span>
+          <span class="sidebar-text fw-bold text-warning">Biodata 1065</span>
         </a>
       </li>
     </ul>
@@ -61,11 +61,11 @@
 <main class="content">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
-      <h2 class="h4">Tambah Biodata Mahasiswa (biodata_1083)</h2>
-      <p class="mb-0">Form input data biodata lengkap dengan validasi dan upload foto.</p>
+      <h2 class="h4">Edit Biodata Mahasiswa (biodata_1065)</h2>
+      <p class="mb-0">Ubah data biodata mahasiswa.</p>
     </div>
     <div>
-      <a href="{{ route('biodata1083.index') }}" class="btn btn-outline-secondary">
+      <a href="{{ route('biodata1065.index') }}" class="btn btn-outline-secondary">
         &larr; Kembali
       </a>
     </div>
@@ -89,14 +89,15 @@
             </div>
           @endif
 
-          <form action="{{ route('biodata1083.store') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('biodata1065.update', $dataBiodata->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
 
             <div class="row mb-3">
               <!-- Nama Lengkap -->
               <div class="col-md-6 mb-3">
                 <label for="nama" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
-                <input type="text" id="nama" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" placeholder="Contoh: Harun Al Rasyid">
+                <input type="text" id="nama" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $dataBiodata->nama) }}">
                 @error('nama')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -105,7 +106,7 @@
               <!-- NIM -->
               <div class="col-md-6 mb-3">
                 <label for="nim" class="form-label">NIM <span class="text-danger">*</span></label>
-                <input type="text" id="nim" name="nim" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim') }}" placeholder="Contoh: 2024101083">
+                <input type="text" id="nim" name="nim" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim', $dataBiodata->nim) }}">
                 @error('nim')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -116,7 +117,7 @@
               <!-- Jurusan -->
               <div class="col-md-4 mb-3">
                 <label for="jurusan" class="form-label">Jurusan / Prodi <span class="text-danger">*</span></label>
-                <input type="text" id="jurusan" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{ old('jurusan') }}" placeholder="Contoh: Teknik Informatika">
+                <input type="text" id="jurusan" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{ old('jurusan', $dataBiodata->jurusan) }}">
                 @error('jurusan')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -125,7 +126,7 @@
               <!-- Tanggal Lahir -->
               <div class="col-md-4 mb-3">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir <span class="text-danger">*</span></label>
-                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}">
+                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir', $dataBiodata->tanggal_lahir) }}">
                 @error('tanggal_lahir')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -136,8 +137,8 @@
                 <label for="gender" class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
                 <select id="gender" name="gender" class="form-select @error('gender') is-invalid @enderror">
                   <option value="">-- Pilih Gender --</option>
-                  <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Laki-laki (Male)</option>
-                  <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Perempuan (Female)</option>
+                  <option value="Male" {{ old('gender', $dataBiodata->gender) == 'Male' ? 'selected' : '' }}>Laki-laki (Male)</option>
+                  <option value="Female" {{ old('gender', $dataBiodata->gender) == 'Female' ? 'selected' : '' }}>Perempuan (Female)</option>
                 </select>
                 @error('gender')
                   <div class="invalid-feedback">{{ $message }}</div>
@@ -149,7 +150,7 @@
               <!-- Email -->
               <div class="col-md-6 mb-3">
                 <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Contoh: user@domain.com">
+                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $dataBiodata->email) }}">
                 @error('email')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -157,19 +158,26 @@
 
               <!-- Foto Profil (Bonus) -->
               <div class="col-md-6 mb-3">
-                <label for="foto_profil" class="form-label">Foto Profil <span class="badge bg-success">Nilai Bonus</span></label>
+                <label for="foto_profil" class="form-label">Ganti Foto Profil <span class="badge bg-success">Nilai Bonus</span></label>
                 <input type="file" id="foto_profil" name="foto_profil" class="form-control @error('foto_profil') is-invalid @enderror" accept="image/*">
-                <small class="text-muted">Format: JPG, JPEG, PNG (Maks 2MB)</small>
+                <small class="text-muted">Biarkan kosong jika tidak ingin mengubah foto</small>
                 @error('foto_profil')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+
+                @if($dataBiodata->foto_profil)
+                  <div class="mt-2">
+                    <small class="d-block text-muted">Foto saat ini:</small>
+                    <img src="{{ asset('storage/' . $dataBiodata->foto_profil) }}" alt="Foto Lama" class="rounded shadow-sm mt-1" style="width: 70px; height: 70px; object-fit: cover;">
+                  </div>
+                @endif
               </div>
             </div>
 
             <!-- Alamat -->
             <div class="mb-4">
               <label for="alamat" class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>
-              <textarea id="alamat" name="alamat" rows="3" class="form-control @error('alamat') is-invalid @enderror" placeholder="Masukkan alamat lengkap">{{ old('alamat') }}</textarea>
+              <textarea id="alamat" name="alamat" rows="3" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat', $dataBiodata->alamat) }}</textarea>
               @error('alamat')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror
@@ -177,8 +185,8 @@
 
             <!-- Action Buttons -->
             <div>
-              <button type="submit" class="btn btn-primary px-4">Simpan Data</button>
-              <a href="{{ route('biodata1083.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+              <button type="submit" class="btn btn-primary px-4">Update Perubahan</button>
+              <a href="{{ route('biodata1065.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
             </div>
 
           </form>

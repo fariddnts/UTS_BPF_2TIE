@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Volt - Data Biodata 1083</title>
+<title>Volt - Data Biodata 1065</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets-admin/img/favicon/favicon-32x32.png') }}">
 <link type="text/css" href="{{ asset('assets-admin/css/volt.css') }}" rel="stylesheet">
@@ -46,13 +46,13 @@
           <span class="sidebar-text">Pelanggan (Modul)</span>
         </a>
       </li>
-      <!-- Menu Biodata 1083 -->
+      <!-- Menu Biodata 1065 -->
       <li class="nav-item active">
-        <a href="{{ route('biodata1083.index') }}" class="nav-link">
+        <a href="{{ route('biodata1065.index') }}" class="nav-link">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
           </span>
-          <span class="sidebar-text fw-bold text-warning">Biodata 1083</span>
+          <span class="sidebar-text fw-bold text-warning">Biodata 1065</span>
         </a>
       </li>
     </ul>
@@ -62,11 +62,11 @@
 <main class="content">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
-      <h2 class="h4">Data Biodata Mahasiswa (Tabel: biodata_1083)</h2>
+      <h2 class="h4">Data Biodata Mahasiswa (Tabel: biodata_1065)</h2>
       <p class="mb-0">Kelola master data biodata mahasiswa dengan fitur foto profil.</p>
     </div>
     <div>
-      <a href="{{ route('biodata1083.create') }}" class="btn btn-success text-white">
+      <a href="{{ route('biodata1065.create') }}" class="btn btn-success text-white">
         <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
         Tambah Biodata
       </a>
@@ -123,10 +123,10 @@
                   </td>
                   <td>{{ $item->email }}</td>
                   <td class="text-center">
-                    <a href="{{ route('biodata1083.edit', $item->id) }}" class="btn btn-info btn-sm text-white">
+                    <a href="{{ route('biodata1065.edit', $item->id) }}" class="btn btn-info btn-sm text-white">
                       Edit
                     </a>
-                    <form action="{{ route('biodata1083.destroy', $item->id) }}" method="POST" style="display:inline">
+                    <form action="{{ route('biodata1065.destroy', $item->id) }}" method="POST" style="display:inline">
                       @csrf
                       @method("DELETE")
                       <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data biodata ini?')">

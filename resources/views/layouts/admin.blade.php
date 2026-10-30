@@ -51,23 +51,23 @@
 
       <!-- Menu Biodata 1083 -->
       <li class="nav-item {{ request()->routeIs('biodata1083.*') ? 'active' : '' }}">
-        <a href="{{ route('biodata1083.index') }}" class="nav-link">
+        <a href="{{ route('biodata1065.index') }}" class="nav-link">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
           </span>
-          <span class="sidebar-text fw-bold text-warning">Biodata 1083</span>
+          <span class="sidebar-text fw-bold text-warning">Biodata 1065</span>
         </a>
       </li>
 
-      <!-- Menu CV -->
-      <li class="nav-item {{ request()->routeIs('cv.*') ? 'active' : '' }}">
-        <a href="{{ route('cv.index') }}" class="nav-link">
-          <span class="sidebar-icon">
-            <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-          </span>
-          <span class="sidebar-text">CV</span>
-        </a>
-      </li>
+            <!-- Menu CV & Portofolio -->
+        <li class="nav-item {{ request()->routeIs('portofolio.*') ? 'active' : '' }}">
+            <a href="{{ route('portofolio.index') }}" class="nav-link">
+            <span class="sidebar-icon">
+                <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            </span>
+            <span class="sidebar-text fw-bold text-warning">CV &amp; Portofolio</span>
+            </a>
+        </li>
     </ul>
   </div>
 </nav>

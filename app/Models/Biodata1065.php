@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Biodata1083 extends Model
+class Biodata1065 extends Model
 {
     use HasFactory;
 
     // Menentukan nama tabel sesuai ketentuan NIM
-    protected $table = 'biodata_1083';
+    protected $table = 'biodata_1065';
 
     // Primary key default adalah id
     protected $primaryKey = 'id';

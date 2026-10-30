@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Biodata1083;
+use App\Models\Biodata1065;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class Biodata1083Controller extends Controller
+class Biodata1065Controller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data['dataBiodata'] = Biodata1083::latest()->get();
-        return view('admin.biodata1083.index', $data);
+        $data['dataBiodata'] = Biodata1065::latest()->get();
+        return view('admin.biodata_1065.index', $data);
     }
 
     /**
@@ -22,7 +22,7 @@ class Biodata1083Controller extends Controller
      */
     public function create()
     {
-        return view('admin.biodata1083.create');
+        return view('admin.biodata_1065.create');
     }
 
     /**
@@ -32,11 +32,11 @@ class Biodata1083Controller extends Controller
     {
         $request->validate([
             'nama'          => 'required|string|max:100',
-            'nim'           => 'required|numeric|unique:biodata_1083,nim',
+            'nim'           => 'required|numeric|unique:biodata_1065,nim',
             'jurusan'       => 'required|string|max:100',
             'tanggal_lahir' => 'required|date',
             'gender'        => 'required|in:Male,Female',
-            'email'         => 'required|email|unique:biodata_1083,email',
+            'email'         => 'required|email|unique:biodata_1065,email',
             'alamat'        => 'required|string',
             'foto_profil'   => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
@@ -70,9 +70,9 @@ class Biodata1083Controller extends Controller
             $data['foto_profil'] = $fotoPath;
         }
 
-        Biodata1083::create($data);
+        Biodata1065::create($data);
 
-        return redirect()->route('biodata1083.index')->with('success', 'Penambahan Data Biodata Berhasil!');
+        return redirect()->route('biodata1065.index')->with('success', 'Penambahan Data Biodata Berhasil!');
     }
 
     /**
@@ -80,8 +80,8 @@ class Biodata1083Controller extends Controller
      */
     public function show(string $id)
     {
-        $biodata = Biodata1083::findOrFail($id);
-        return view('admin.biodata1083.show', compact('biodata'));
+        $biodata = Biodata1065::findOrFail($id);
+        return view('admin.biodata1065.show', compact('biodata'));
     }
 
     /**
@@ -89,8 +89,8 @@ class Biodata1083Controller extends Controller
      */
     public function edit(string $id)
     {
-        $data['dataBiodata'] = Biodata1083::findOrFail($id);
-        return view('admin.biodata1083.edit', $data);
+        $data['dataBiodata'] = Biodata1065::findOrFail($id);
+        return view('admin.biodata1065.edit', $data);
     }
 
     /**
@@ -98,15 +98,15 @@ class Biodata1083Controller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $biodata = Biodata1083::findOrFail($id);
+        $biodata = Biodata1065::findOrFail($id);
 
         $request->validate([
             'nama'          => 'required|string|max:100',
-            'nim'           => 'required|numeric|unique:biodata_1083,nim,' . $biodata->id,
+            'nim'           => 'required|numeric|unique:biodata_1065,nim,' . $biodata->id,
             'jurusan'       => 'required|string|max:100',
             'tanggal_lahir' => 'required|date',
             'gender'        => 'required|in:Male,Female',
-            'email'         => 'required|email|unique:biodata_1083,email,' . $biodata->id,
+            'email'         => 'required|email|unique:biodata_1065,email,' . $biodata->id,
             'alamat'        => 'required|string',
             'foto_profil'   => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
@@ -143,7 +143,7 @@ class Biodata1083Controller extends Controller
 
         $biodata->save();
 
-        return redirect()->route('biodata1083.index')->with('success', 'Perubahan Data Biodata Berhasil!');
+        return redirect()->route('biodata1065.index')->with('success', 'Perubahan Data Biodata Berhasil!');
     }
 
     /**
@@ -151,7 +151,7 @@ class Biodata1083Controller extends Controller
      */
     public function destroy(string $id)
     {
-        $biodata = Biodata1083::findOrFail($id);
+        $biodata = Biodata1065::findOrFail($id);
 
         if ($biodata->foto_profil && Storage::disk('public')->exists($biodata->foto_profil)) {
             Storage::disk('public')->delete($biodata->foto_profil);
@@ -159,6 +159,6 @@ class Biodata1083Controller extends Controller
 
         $biodata->delete();
 
-        return redirect()->route('biodata1083.index')->with('success', 'Penghapusan Data Biodata Berhasil!');
+        return redirect()->route('biodata1065.index')->with('success', 'Penghapusan Data Biodata Berhasil!');
     }
 }
