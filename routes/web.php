@@ -7,6 +7,9 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\UserController;
+
+Route::resource('user', UserController::class)->except('show');
 
 Route::resource('portofolio', PortofolioController::class);
 
